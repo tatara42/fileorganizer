@@ -1,3 +1,5 @@
+﻿# .gitignore for C#
+
 # User-specific files
 *.rsuser
 *.suo
@@ -8,35 +10,14 @@
 # User-specific files (Mono Auto Generated)
 mono_crash.*
 
-# Visual Studio
-.vs/
+# Compiled directory
+bin/
+obj/
 
 # Visual Studio Code directories
 .vscode/
 
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# VS Code folders
-.vscode/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# JetBrains Rider
+# Rider
 .idea/
 
 # User-specific files
@@ -73,7 +54,6 @@ $RECYCLE.BIN/
 # JetBrains Rider
 .idea/
 *.sln.iml
-*.iml
 
 # User-specific files
 *.suo
@@ -135,6 +115,9 @@ $RECYCLE.BIN/
 
 # VS Code folders
 .vscode/
+
+# Visual Studio Folder
+.vs/
 
 # Windows Installer files
 *.cab

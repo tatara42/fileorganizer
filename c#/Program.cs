@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 
 class Program
 {
@@ -11,10 +12,23 @@ class Program
             Environment.Exit(1);
         }
 
+        // Path of Folder to be Organized
         string sourceFolder = args[0];
+
+        // Path of Folder after Organized
         string targetFolder = sourceFolder;
 
-        CategorizeFiles(sourceFolder, targetFolder);
+        Console.WriteLine($"Are you sure you want to Organize {sourceFolder}(Y/any key):");
+        char userInput = Console.ReadKey().KeyChar;
+        Console.WriteLine();
+        if (userInput == 'Y' || userInput == 'y')
+        {
+            CategorizeFiles(sourceFolder, targetFolder);
+            Console.WriteLine("Organized Successfully");
+
+        }
+        else
+            Console.WriteLine("Did Not Organized, Exiting Program!");
     }
 
     static void CategorizeFiles(string sourceFolder, string destinationFolder)
@@ -29,6 +43,8 @@ class Program
                 Directory.CreateDirectory(folderPath);
             }
         }
+
+        // Rename Folders to desired Name
         RenameFolder(sourceFolder, categories);
 
 
@@ -104,6 +120,7 @@ class Program
         }
     }
 
+    // Move Files from source file path to destination folder
     static void MoveFile(string sourceFilePath, string destinationFolder, string category)
     {
         string fileName = Path.GetFileName(sourceFilePath);
@@ -111,6 +128,8 @@ class Program
         File.Move(sourceFilePath, destinationPath);
     }
 
+
+    // Rename Folder (example "images" to "Images")
     static void RenameFolder(string basePath, string[] foldersToRename)
     {
         try
@@ -126,7 +145,7 @@ class Program
                 string newFolderPath = Path.Combine(basePath, newFolderName);
 
                 // Check if the folder is already in the desired format
-                if (!oldFolderPath.Equals(newFolderPath, StringComparison.OrdinalIgnoreCase))
+                if (!oldFolderPath.Equals(newFolderPath))
                 {
                     // Rename the Folder
                     string tempFolder = Path.Combine(basePath, "TEMPORARYFOLDERTORENAMETHEOLDERFOLDER");
